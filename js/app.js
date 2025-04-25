@@ -96,6 +96,10 @@ async function app() {
                 removeProduct.src = "../images/remove-icon.svg";
                 removeProduct.alt = "";
 
+            removeProduct.addEventListener("click",()=> {
+                productItem.remove()
+                })
+
             let totalOrder = document.createElement("p");
                 totalOrder.classList = "total-order";
 
@@ -105,7 +109,7 @@ async function app() {
 
             let totalOrderPrice = document.createElement("span");
                 totalOrderPrice.classList = "total-order-price";
-                totalOrderPrice.textContent = fullPrice;
+                totalOrderPrice.innerHTML = fullPrice;
 
             cartProducts.appendChild(productItem);
             productItem.appendChild(productItemName);
@@ -113,8 +117,10 @@ async function app() {
             productDetails.appendChild(productDetailsQuantity);
             productDetails.appendChild(productDetailsUnitPrice);
             productDetails.appendChild(productDetailsTotalPrice);
+            productDetails.appendChild(removeProduct)
             totalOrder.appendChild(totalOrderTitle);
             totalOrder.appendChild(totalOrderPrice);
+
 
         });
     }
