@@ -62,13 +62,7 @@ async function app() {
             pizzas++;
             console.log(pizzas);
             cartValue.textContent = `Votre panier (${pizzas})`;
-            if (pizzas >= 1) {
-                basketEmpty.style.display = "none";
-                basketFull.style.display = "grid";
-            } else if (pizzas <= 0) {
-                basketEmpty.style.display = "grid";
-                basketFull.style.display = "none";
-            }
+
             let productItem = document.createElement("li");
                 productItem.className = "basket-product-item";
 
@@ -97,6 +91,8 @@ async function app() {
                 removeProduct.alt = "";
 
             removeProduct.addEventListener("click",()=> {
+                pizzas-- 
+                cartValue.textContent = `Votre panier (${pizzas})`;
                 productItem.remove()
                 })
 
@@ -121,7 +117,14 @@ async function app() {
             totalOrder.appendChild(totalOrderTitle);
             totalOrder.appendChild(totalOrderPrice);
 
-
+            if (pizzas >= 1) {
+                basketEmpty.style.display = "none";
+                basketFull.style.display = "grid";
+            } else if (pizzas <= 0) {
+                basketEmpty.style.display = "grid";
+                basketFull.style.display = "none";
+            }
+            
         });
     }
     }
